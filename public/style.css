@@ -1,0 +1,156 @@
+/* Set up the body styles */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    font-size: 20px;
+    overflow: hidden; /* Prevents scrollbars caused by animation */
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Center header */
+header {
+    text-align: center;
+    padding: 20px;
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 40px;
+    text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.6);
+}
+
+/* Cool shadow and glow for paragraphs */
+p {
+    margin: 20px;
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.6;
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.4);
+}
+
+/* Create the animated bubbles */
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; /* Start the bubbles below the visible area */
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(173, 216, 230, 0.3) 20%, rgba(173, 216, 230, 0) 70%);
+    animation: bubbleAnimation 15s infinite ease-in-out;
+    z-index: -1;
+    pointer-events: none; /* Bubbles don't interfere with interaction */
+}
+
+/* Variation for ::after to make animation more dynamic */
+body::after {
+    animation-duration: 20s;
+}
+
+/* Keyframes for bubble animation */
+@keyframes bubbleAnimation {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+/* Adding more random floating bubbles */
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    animation: bubbleFloat 10s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* Dynamic floating bubbles */
+@keyframes bubbleFloat {
+    0% {
+        transform: translateY(100%);
+    }
+    50% {
+        transform: translateY(50vh) scale(1.1);
+    }
+    100% {
+        transform: translateY(-100vh) scale(0.9);
+    }
+}
+
+/* Footer styling */
+footer {
+    position: absolute;
+    bottom: 20px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Buttons styling */
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Dark mode transition */
+.dark-mode {
+    background-color: white;
+    color: black;
+}
+
+.dark-mode button {
+    background-color: #444;
+    color: white;
+}
+
+.dark-mode p, .dark-mode header {
+    text-shadow: none;
+}
+
+/* Styling the profile picture */
+img.profile-pic {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+img.profile-pic:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+}

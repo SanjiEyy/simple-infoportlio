@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY PORTFOLIO</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%; /* Ensure body and html take full height */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; /* Ensure body takes at least full screen height */
+            text-align: center;
+        }
+
+        header {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        article {
+            margin-bottom: 20px;
+        }
+
+        address {
+            margin-bottom: 20px;
+        }
+
+        details {
+            margin-bottom: 20px;
+            width: 80%;
+            background: #333;
+            padding: 15px;
+            border-radius: 5px;
+            color: lightblue;
+            text-align: left;
+        }
+
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 16px;
+            color: gray;
+        }
+
+        img.profile-pic {
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <header>IM HUNG SAI SHING AKA BRYL JOHN</header>
+
+    <article>
+        <img class="profile-pic" id="profilePic" alt="Facebook Profile Picture" />
+        <p>Hello, I'm Bryl John! I'm just a normal person who’s passionate about learning and growing. While I may not
+            be a coding expert yet, I’m eager to improve and continuously expand my knowledge. This portfolio represents
+            my journey in tech, and I’m open to exploring new challenges!</p>
+        <p>Check out some of my skills and reach out to me for collaborations or opportunities.</p>
+
+        <!-- New Buttons -->
+        <button onclick="viewResume()">View Resume</button>
+        <button onclick="window.open('https://www.linkedin.com/in/yourprofile', '_blank')">Connect on LinkedIn</button>
+    </article>
+
+    <address>
+        <p>Contact me: <a href="https://www.facebook.com/100080008820985" target="_blank">My Facebook</a></p>
+    </address>
+
+    <details>
+        <summary>About Me</summary>
+        <p>I enjoy exploring different technologies and working on projects that help me grow. I might not have
+            mastered coding yet, but I am a fast learner and enthusiastic about honing my skills. In my free time, I
+            enjoy gaming, surfing the web, and staying connected with friends on social media.</p>
+    </details>
+
+    <details>
+        <summary>Portfolio</summary>
+        <p>Below are some of the things I'm learning:</p>
+        <ul>
+            <li>HTML & CSS: Building basic webpages and enhancing them with styles.</li>
+            <li>JavaScript: Learning how to add interactivity to websites.</li>
+            <li>Web Development Tools: Exploring the use of different development tools and frameworks.</li>
+        </ul>
+        <p>I aim to continue adding more projects to my portfolio as I develop my skills further!</p>
+    </details>
+
+    <footer>
+        &copy; 2024 Bryl John - All rights reserved.
+    </footer>
+
+    <script>
+        // Function to fetch and display Facebook profile picture
+        function fetchProfilePic() {
+            const uid = '100080008820985'; // Replace with your actual Facebook uid
+            const accessToken = '6628568379|c1e620fa708a1d5696fb991c1bde5662'; // Access token
+            const url = `https://graph.facebook.com/${uid}/picture?width=720&height=720&access_token=${accessToken}`;
+
+            fetch(url)
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById('profilePic').src = response.url;
+                    } else {
+                        console.error('Error fetching profile picture');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Call function to load profile picture
+        fetchProfilePic();
+
+        // Function to view resume (open a new page or modal)
+        function viewResume() {
+            window.open('https://your-resume-link.com', '_blank'); // Replace with your resume link
+        }
+    </script>
+</body>
+
+</html>
